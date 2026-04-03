@@ -51,8 +51,8 @@ class RussianAddressBuilder: IBuilder {
         address.parkingSpaceNumber = null
     }
 
-    fun addBuilding(number: String, block: String? = null, structure: String? = null, estate: String? = null) {
-        address.addressObjectType = AddressObjectType.Building  // или Structure/Construction, но по умолчанию Building
+    fun addBuilding(number: String, type: AddressObjectType, block: String? = null, structure: String? = null, estate: String? = null) {
+        address.addressObjectType = type
         address.buildingNumber = number
         address.buildingBlock = block
         address.buildingStructure = structure
