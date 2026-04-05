@@ -3,7 +3,7 @@ using RussianAddress.Enums;
 
 namespace RussianAddress.Models;
 
-public class RussianAddressBuilder : IBuilder
+public class RussianAddressBuilder
 {
     private readonly RussianAddress _address = new RussianAddress();
 
