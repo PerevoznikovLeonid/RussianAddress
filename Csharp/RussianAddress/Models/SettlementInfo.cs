@@ -2,8 +2,8 @@
 
 namespace RussianAddress.Models;
 
-public class SettlementInfo
+public class SettlementInfo: ValueObject<SettlementType>, IValueObject
 {
-    public SettlementType? Type { get; set; }
-    public string? Name { get; set; }
+    public override required SettlementType Type { get; init; }
+    public override required string Name { get; init; }
 }

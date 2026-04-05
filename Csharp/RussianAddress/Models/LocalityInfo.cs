@@ -2,8 +2,8 @@
 
 namespace RussianAddress.Models;
 
-public class LocalityInfo
+public class LocalityInfo: ValueObject<InhabitedLocalityType>, IValueObject
 {
-    public InhabitedLocalityType? Type { get; set; }
-    public string? Name { get; set; }
+    public override required InhabitedLocalityType Type { get; init; }
+    public override required string Name { get; init; }
 }

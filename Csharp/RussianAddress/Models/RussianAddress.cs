@@ -1,11 +1,15 @@
-﻿using RussianAddress.Enums;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.InteropServices.JavaScript;
+using System.Text.Json;
+using RussianAddress.Enums;
 
 namespace RussianAddress.Models;
 
-public class RussianAddress
+public class RussianAddress: IEnumerable<IValueObject>
 {
-    public string Country { get; set; } = "Российская Федерация";
-    public SubjectInfo? Subject { get; set; }
+    public string Country { get; } = "Российская Федерация";
+    public required SubjectInfo Subject { get; set; }
     public MunicipalityInfo? Municipality { get; set; }
     public SettlementInfo? Settlement { get; set; }
     public LocalityInfo? Locality { get; set; }
@@ -32,4 +36,21 @@ public class RussianAddress
 
     // Служебные поля
     public string? PostalCode { get; set; }
+    
+    public IEnumerator<IValueObject> GetEnumerator()
+    {
+        var properties = this.GetType().GetProperties();
+        foreach (var property in properties)
+        {
+            if (property.GetValue(this) is IValueObject value)
+            {
+                yield return value;
+            }
+        }
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
 }

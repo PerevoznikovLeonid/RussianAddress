@@ -5,7 +5,14 @@ namespace RussianAddress.Models;
 
 public class RussianAddressBuilder
 {
-    private readonly RussianAddress _address = new RussianAddress();
+    private readonly RussianAddress _address;
+    
+    public RussianAddressBuilder(SubjectRfType subjectType, string subjectName)
+    {
+        var subjectInfo = new SubjectInfo { Type = subjectType, Name = subjectName };
+        var address = new RussianAddress() { Subject =  subjectInfo };
+        _address = address;
+    }
 
     public void AddSubject(SubjectRfType type, string name)
     {
@@ -108,7 +115,7 @@ public class RussianAddressBuilder
 
         if (_address.PremiseType != null && _address.ParkingSpaceType != null)
             throw new InvalidOperationException("Нельзя одновременно указать помещение и машино-место.");
-
+        
         return _address;
     }
 }

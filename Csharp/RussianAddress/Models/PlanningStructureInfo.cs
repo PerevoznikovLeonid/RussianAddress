@@ -2,8 +2,8 @@
 
 namespace RussianAddress.Models;
 
-public class PlanningStructureInfo
+public class PlanningStructureInfo: ValueObject<PlanningStructureType>, IValueObject
 {
-    public PlanningStructureType? Type { get; set; }
-    public string? Name { get; set; }
+    public override required PlanningStructureType Type { get; init; }
+    public override required string Name { get; init; }
 }

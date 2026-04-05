@@ -2,8 +2,8 @@
 
 namespace RussianAddress.Models;
 
-public class MunicipalityInfo
+public class MunicipalityInfo: ValueObject<MunicipalityType>, IValueObject
 {
-    public MunicipalityType? Type { get; set; }
-    public string? Name { get; set; }
+    public override required MunicipalityType Type { get; init; }
+    public override required string Name { get; init; }
 }

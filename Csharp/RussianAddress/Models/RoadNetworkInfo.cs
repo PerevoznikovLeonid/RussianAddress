@@ -2,8 +2,8 @@
 
 namespace RussianAddress.Models;
 
-public class RoadNetworkInfo
+public class RoadNetworkInfo: ValueObject<RoadNetworkType>, IValueObject
 {
-    public RoadNetworkType? Type { get; set; }
-    public string? Name { get; set; }
+    public override required RoadNetworkType Type { get; init; }
+    public override required string Name { get; init; }
 }
